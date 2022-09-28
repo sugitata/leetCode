@@ -1,4 +1,8 @@
+from ast import List
+
 # @see https://stackoverflow.com/questions/9835762/how-do-i-find-the-duplicates-in-a-list-and-create-another-list-with-them
+
+
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         # Simplest solution
