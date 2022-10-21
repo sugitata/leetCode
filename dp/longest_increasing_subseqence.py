@@ -5,7 +5,10 @@ class Solution:
         dp = [1] * n
         # memoize the max the number of subsequence from 1 to n
         for i in range(1, n):
+            # up to self weight
             for j in range(0, i):
+                # nums[i]: 1 <-> nums[j]: judge increasing
+                # dp[i]: 1 <-> dp[j]: memo so far
                 if nums[i] > nums[j] and dp[i] < dp[j] + 1:
                     dp[i] = dp[j] + 1
         # init
