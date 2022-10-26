@@ -9,13 +9,13 @@ class Solution:
         # n: value (row)
         column = m
         row = n
-        dp = [[-1 for w in range(m)] for v in range(n)]
+        dp = [[0 for w in range(m)] for v in range(n)]
         # init
         # e.g. (m: 5, n: 4)
-        # | -1 -1 -1 -1  1|
-        # | -1 -1 -1 -1  1|
-        # | -1 -1 -1 -1  1|
-        # |  1  1  1  1  1|
+        # | 0 0 0 0 1|
+        # | 0 0 0 0 1|
+        # | 0 0 0 0 1|
+        # | 1 1 1 1 1|
         for w in range(column):
             # 最下段も1にする
             dp[row - 1][w] = 1
