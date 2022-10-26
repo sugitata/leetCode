@@ -11,21 +11,21 @@ class Solution:
         row = n
         dp = [[-1 for w in range(m)] for v in range(n)]
         # init
-        # ? なぜこうしている
         # e.g. (m: 5, n: 4)
-        # | -1 -1 -1 -1 -1|
-        # | -1 -1 -1 -1 -1|
         # | -1 -1 -1 -1  1|
-        # | -1 -1 -1 -1 -1|
-        dp[row - 2][column - 1] = 1
+        # | -1 -1 -1 -1  1|
+        # | -1 -1 -1 -1  1|
+        # |  1  1  1  1  1|
         for w in range(column):
             # 最下段も1にする
             dp[row - 1][w] = 1
         for v in range(row):
             # 最右行も1にする
             dp[v][column - 1] = 1
+
         # ? rangeを３つとる場合は何？
-        # ->
+        # -> start, stop, step
+        # -> row: 4 だったら -> 2 1 0
         for v in range(row - 2, -1, -1):
             for w in range(column - 2, -1, -1):
                 # ? 逆算している？（右下のゴールからメモして行っている）
