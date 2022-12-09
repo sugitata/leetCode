@@ -15,12 +15,20 @@ class Solution:
         return False
 
     def getWords(
-        self, board: List[List[str]], word: str, i: int, j: int, visited, pos: int = 0
+        self,
+        board: List[List[str]],
+        word: str,
+        i: int,
+        j: int,
+        visited: dict,
+        pos: int = 0,
     ) -> bool:
         # 今のポジションが探索している文字の長さと一致したなら操作終了
         if pos == len(word):
             return True
 
+        # 走査を打ち切る
+        #
         # i < 0 or i == len(board) : 範囲内のrowか確認
         # j < 0 or j == len(board[0]) : 範囲内のcolumnか確認
         # visited.get : DFSでseenになっているか確認
@@ -36,16 +44,16 @@ class Solution:
             return False
 
         # ? visitedってどういう型？
+        # dict: https://note.nkmk.me/en/python-dict-create/
         visited[(i, j)] = True
         # ? なぜ or でresを取得する？
         # -> 四方向で一つでもTrueになるものがあれば走査終了と見做せるから (pos == len(word))
         res = (
+            # 次の文字の探索を四方向に対して行う
             self.getWords(board, word, i, j - 1, visited, pos + 1)
             or self.getWords(board, word, i + 1, j, visited, pos + 1)
             or self.getWords(board, word, i, j + 1, visited, pos + 1)
             or self.getWords(board, word, i, j + 1, visited, pos + 1)
         )
-        # ? なぜvisitedをFalseに戻す？
-        visited[(i, j)] = False
 
         return res
