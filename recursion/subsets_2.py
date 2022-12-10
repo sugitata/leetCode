@@ -4,6 +4,7 @@ from typing import List
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
+        # 最初に空の配列が最初に絶対入るので、それは入れておく
         res = [[]]
         previous_size = 0
         for i in range(len(nums)):
@@ -17,6 +18,7 @@ class Solution:
                     # ? 先頭に追加するってことかな？
                     # -> https://stackoverflow.com/questions/11367902/negative-list-index
                     # -> 逆だった最後の要素って意味らしい
+                    # res[j] を append したので、さらにそこにユニークとなるターゲット値(nums[i])を追加してあげる
                     res[-1].append(nums[i])
             previous_size = size
         return res
