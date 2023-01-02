@@ -42,6 +42,9 @@ class Solution:
         left_d = self.maxDepth(root.left)
         right_d = self.maxDepth(root.right)
 
+        # left_d と right_dの値は常に保存されている
+        # left_dとright_dの大きい方どちらかがあれさえばいいので、これでインクリメントしていく
+        # 以下が呼ばれるのは、 self.maxDepth()でrecursiveで最下層まで届いてから、ボトムアップでresolveしていく
         if left_d > right_d:
             return left_d + 1
         else:
